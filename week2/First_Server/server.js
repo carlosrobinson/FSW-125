@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 
-//Fake Data Users
+//Route Users
 const users = [
     {name:"carlos", age: 45},
     {name: "Sarah", age: 25},
@@ -12,7 +12,7 @@ const users = [
 app.get("/userdata", (req,res) => {
     res.send(users)
 })
-//Fake Data Cars
+//Route Cars
 const cars = [
     {vehichle:"chevy", type: "Tahoe"},
     {vehichle: "Toyota", type: "Camry"},
