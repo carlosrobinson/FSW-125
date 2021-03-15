@@ -37,23 +37,58 @@ const bountyHunters = [
     }
 ]
 
-// Routes
+//Get One
+hunterRouter.get("/:bountyHunterId", (req, res) =>{
+    const bountyHunterId = req.params.bountyHunterId
+    const foudHunter = bountyHunters.find(hunter => hunter._id===bountyHunterId)
+    res.send(foudHunter)
+})
+
+
+//Get by Type
+hunterRouter.get("/search/type", (req, res) =>{
+    const type = req.query.type
+    const filteredHunters = bountyHunters.filter(hunter => hunter.type === type)
+    res.send(filteredHunters)
+})
+
+//Delete One
+hunterRouter.delete("/:bountyHunterId", (req, res) =>{
+    const bountyHunterId = req.params.bountyHunterId
+    const hunterIndex = bountyHunters.findIndex(hunter => hunter._id === bountyHunterId)
+    bountyHunters.splice(hunterIndex, 1)
+    res.send("Successfully deleted hunter!")
+})
+
+//Update One
+hunterRouter.put("/:bountyHunterId", (req, res) => {
+    const bountyHunterId = req.params.bountyHunterId
+    const hunterIndex = bountyHunters.findIndex(hunter => hunter._id === bountyHunterId)
+    const updatedHunter = Object.assign(bountyHunters[hunterIndex], req.body)
+    res.send(updatedHunter)
+})
+
+// Get All====Routes
 // hunterRouter.get("/", (req, res) =>{
 //     res.send(bountyHunters)
 // })
 
-
-// hunterRouter.post("/", (req, res) => {
+//Post One===
+// hunterRoute4r.post("/", (req, res) => {
 //     const newBountyHunter = req.body
 //     newBountyHunter._id = uuidv4()
 //     bountyHunters.push(newBountyHunter)
 //     res.send(`Succesfully added ${newBountyHunter.firstName} to the database.`)
 // })
 
+
+//Get All====
 hunterRouter.route("/")
 .get( (req, res) =>{
     res.send(bountyHunters)
 })
+
+//Post One====
 .post( (req, res) => {
     const newBountyHunter = req.body
     newBountyHunter._id = uuidv4()
@@ -68,4 +103,4 @@ hunterRouter.route("/")
 
 
 
-module.exports= hunterRouter
+module.exports = hunterRouter
