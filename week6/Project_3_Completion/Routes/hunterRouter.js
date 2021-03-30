@@ -38,18 +38,26 @@ const bountyHunters = [
 ]
 
 //Get One
-hunterRouter.get("/:bountyHunterId", (req, res) =>{
+hunterRouter.get("/:bountyHunterId", (req, res, next) =>{
     const bountyHunterId = req.params.bountyHunterId
     const foudHunter = bountyHunters.find(hunter => hunter._id===bountyHunterId)
-    res.send(foudHunter)
+    if(!foudHunter){
+        const error = new Error(`The item with id ${bountyHunterId} was not found.`)
+        return next(error)
+    }
+    res.status(200).send(foudHunter)
 })
 
 
 //Get by Type
-hunterRouter.get("/search/type", (req, res) =>{
+hunterRouter.get("/search/type", (req, res, next) =>{
     const type = req.query.type
+    if(!type){
+        const error = new Error(`You must provide a type.`)
+        return next(error)
+    }
     const filteredHunters = bountyHunters.filter(hunter => hunter.type === type)
-    res.send(filteredHunters)
+    res.status(200).send(filteredHunters)
 })
 
 //Delete One
@@ -68,6 +76,8 @@ hunterRouter.put("/:bountyHunterId", (req, res) => {
     res.send(updatedHunter)
 })
 
+
+
 // Get All====Routes
 // hunterRouter.get("/", (req, res) =>{
 //     res.send(bountyHunters)
@@ -85,6 +95,7 @@ hunterRouter.put("/:bountyHunterId", (req, res) => {
 //Get All====
 hunterRouter.route("/")
 .get( (req, res) =>{
+    res.status(200)
     res.send(bountyHunters)
 })
 
@@ -93,7 +104,7 @@ hunterRouter.route("/")
     const newBountyHunter = req.body
     newBountyHunter._id = uuidv4()
     bountyHunters.push(newBountyHunter)
-    res.send(newBountyHunter)
+    res.status(201).send(newBountyHunter)
 })
 
 

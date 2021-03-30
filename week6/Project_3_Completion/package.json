@@ -1,10 +1,10 @@
 {
-  "name": "express-router",
+  "name": "project_3_completion",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +13,6 @@
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "uuid": "^8.3.2"
-  }
+  },
+  "description": ""
 }
