@@ -19,12 +19,14 @@ export default function AddHunterForm (props) {
         e.preventDefault()
         props.submit(inputs, props._id)
         setInputs(initInputs)
+        
     }
 
 
         
  function handleAlive(e) {
     const x = e.target.value
+
     switch(x) { 
         case "true":
             return setInputs(prevInputs=>({...prevInputs,alive: true}))
@@ -35,7 +37,6 @@ export default function AddHunterForm (props) {
         default:
                 setInputs(initInputs)
         }
-
  } 
 
     return (
@@ -44,7 +45,7 @@ export default function AddHunterForm (props) {
             <input type= "text" name= "lastName" value= {inputs.lastName} onChange= {handleChange}></input>
             <input name= "alive" type= "text" value={inputs.alive} onChange={handleAlive}></input>
             <input type= "number" name= "bounty" value= {inputs.bounty} onChange ={handleChange}></input>
-            <input type= "text" name= "type" value= {inputs.type} onChange= {handleChange}></input>
+            <input type= "text" name= "type" value= {inputs.type} onChange= {handleChange} ></input>
             <button id= "form-button">{props.btnText}</button>
         </form> 
     )

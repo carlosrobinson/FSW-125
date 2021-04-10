@@ -1,0 +1,54 @@
+body {
+    margin: 20px;
+    padding: 10px;
+    background-image: url(https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1080&q=80);
+}
+
+.student-cnter {
+    position: relative;
+    border: 1px solid black;
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    text-align: center;
+    justify-items: flex-start;
+    align-items: flex-start;
+    margin: auto;
+    color: rgb(226, 22, 14);
+}
+#student-form {
+    position: relative;
+    display: inline-block;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+    width: 100px;
+    height: 25px;
+    text-align: center;
+    margin: auto;
+    
+}
+
+.delete-btn {
+    width: 100px;
+    background-color: blue;
+}
+
+.edit-btn {
+    width: 100px;
+    background-color: red;
+}
+#submit {
+    width: 200px;
+    height: 100px;
+}
+.btn-form {
+    width: 100px;
+}
+.header {
+    text-align: center;
+    color: red;
+}

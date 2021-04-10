@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import AddHunterForm from "./AddHunterForm.js"
 
 function Hunter(props) {
-    const {firstName, lastName, bounty,alive, type, _id} = props
+    const {firstName, lastName, bounty, alive, type, _id} = props
     const [editToggle, setEditToggle] = useState(false)
   return (
     <div className= "hunter-container">
@@ -12,7 +12,7 @@ function Hunter(props) {
                 <h3>{bounty}</h3>
                 <h3>{alive}</h3>
                 <h3>{type}</h3>
-                <button 
+                <button  
                     className= "delete"
                     onClick= {() => props.deleteHunter(_id)}>
                     Delete
